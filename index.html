@@ -270,18 +270,12 @@ status.textContent='Надсилаємо результат…';
 
 try{
 await fetch(RESULTS_URL,{
-method:'POST',
-mode:'no-cors',
-headers:{'Content-Type':'text/plain;charset=utf-8'},
-body:JSON.stringify(payload)
+  method:'POST',
+  mode:'no-cors',
+  body:new URLSearchParams({
+    payload:JSON.stringify(payload)
+  })
 });
-status.textContent='Запит надіслано. Перевір таблицю Apex-results, щоб підтвердити, що результат з’явився.';
-button.textContent='Надіслано ✓';
-}catch(error){
-status.textContent='Не вдалося надіслати результат. Спробуй ще раз або напиши нам в Instagram.';
-button.disabled=false;
-}
-};
 
 $('restart').onclick=()=>{
 index=0;
