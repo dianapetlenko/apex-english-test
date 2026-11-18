@@ -276,10 +276,23 @@ await fetch(RESULTS_URL,{
     payload:JSON.stringify(payload)
   })
 });
+status.textContent='Запит надіслано. Перевір таблицю Apex-results.';
+button.textContent='Надіслано ✓';
+}catch(error){
+status.textContent='Не вдалося надіслати результат. Спробуй ще раз.';
+button.disabled=false;
+}
+};
 
 $('restart').onclick=()=>{
 index=0;
 answers={};
+$('studentName').value='';
+$('studentContact').value='';
+$('consent').checked=false;
+$('saveStatus').textContent='';
+$('saveResult').disabled=false;
+$('saveResult').textContent='Надіслати результат ↗';
 $('result').classList.add('hidden');
 $('quiz').style.display='block';
 showQuestion();
